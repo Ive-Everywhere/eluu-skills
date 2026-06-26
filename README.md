@@ -17,6 +17,12 @@ Keep one session sharp across many large sub-tasks. See the [Handoffs technique]
 | [`create-handoff`](./create-handoff) | Write a handoff document to the hard disk capturing goal, progress, next steps, and decisions. Use before `/compact`. |
 | [`resume-handoff`](./resume-handoff) | Read the most recent handoff and re-establish context after `/compact` so the colleague can keep going. |
 
+### Decks & presentations
+
+| Skill | What it does |
+|---|---|
+| [`presentations`](./presentations) | Build high-craft, **editable** decks — a PowerPoint `.pptx` or a native Google Slides document — for investor/board decks, launches, operating reviews, and finance/metrics stories. Ships a python-pptx grid engine, a Google Slides API assembler, a matplotlib chart kit, and an automated layout-quality gate. |
+
 ## How skills work in Eluu
 
 A skill is a packaged workflow attached to a colleague. Once attached, the colleague runs it the same way every time — the steps, the checks, the output shape, all consistent. Read the [Skills documentation](https://docs.eluu.ai/colleagues/skills) for the full picture.
@@ -27,4 +33,4 @@ PRs welcome. Each new skill is one folder containing a `SKILL.md` file with YAML
 
 ## License
 
-MIT.
+MIT, except the [`presentations`](./presentations) skill, which is Apache-2.0 (see [`presentations/LICENSE`](./presentations/LICENSE) and [`presentations/NOTICE`](./presentations/NOTICE)).
