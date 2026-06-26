@@ -1,0 +1,30 @@
+Eluu Presentations Skill
+Copyright 2026 Eluu Labs
+
+This product is licensed under the Apache License, Version 2.0 (the "License");
+you may not use this skill except in compliance with the License. A copy of the
+License is provided in the LICENSE file in this directory, and is also available
+at http://www.apache.org/licenses/LICENSE-2.0.
+
+----------------------------------------------------------------------
+
+Authorship and provenance
+
+All prose, documentation, and source code in this skill were authored
+independently by Eluu Labs. The methodology it describes (claim-led titles,
+deck-profile routing, a column/baseline grid, measured text fitting, font
+embedding, a layout-quality gate, and native Google Slides assembly) reflects
+general, widely-practised presentation-design and software-engineering
+techniques. No third-party proprietary text, configuration, or code is included
+or redistributed here.
+
+This skill targets open, broadly-available tooling only:
+
+  - python-pptx           (MIT License)        — editable .pptx generation
+  - Pillow                (HPND / MIT-CMU)     — text metrics and image work
+  - matplotlib            (PSF-based License)  — chart rendering
+  - LibreOffice (soffice) (MPL-2.0, external)  — rendering/PDF export at runtime
+  - Google Slides API     (Google APIs)        — native Slides assembly
+
+These dependencies are used as-is at runtime and are not redistributed by this
+skill. Each remains under its own license.
