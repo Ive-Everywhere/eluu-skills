@@ -25,10 +25,6 @@ Read entirely for spreadsheet creation, editing, analysis, or visualization.
 - Analyze with formulas, else sandbox Python libraries and JSON/CSV intermediates; other libraries only for missing capabilities.
 - Use the plan tool for complex work.
 - In your final response, omit builders, previews, or other support files unless requested.
-- Immediately before the first create/edit authoring command, run `mark_artifact_operation_started.mjs` successfully exactly once using the command below. Do not run it for read-only work. For edits, replace `create` with `edit`; adjust the expected count and output format to match the requested outputs.
-  ```bash
-  node container_tools/mark_artifact_operation_started.mjs --operation-kind create --expected-output-count 1 --output-format xlsx
-  ```
 
 ## Spreadsheet (Workbook) Complexity: Workbook Structure & Formulas
 
@@ -466,5 +462,5 @@ Never cite intermediates unless asked.
 ## Requirements
 
 Python: `openpyxl` (authoring, inspection and verification), `pandas`, `numpy` (analysis), `pypdf`, `python-docx`, `reportlab` (source extraction)
-System: `node` (for `container_tools/mark_artifact_operation_started.mjs`); LibreOffice (`soffice`) for formula recalculation and PDF rendering, because `openpyxl` does not evaluate formulas or render sheets; `pdftoppm` (poppler-utils) for the PDF to PNG step
+System: LibreOffice (`soffice`) for formula recalculation and PDF rendering, because `openpyxl` does not evaluate formulas or render sheets; `pdftoppm` (poppler-utils) for the PDF to PNG step
 Integrations: Drive (Google Sheets route only, see `routing/google_sheets.md`)
