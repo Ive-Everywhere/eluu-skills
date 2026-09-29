@@ -76,9 +76,17 @@ machine that built it can still break in the viewer the user opens.
    overflowing a container, weak box padding, tight text boxes, and
    kicker-centerline drift. Errors block. Also inspect a `--grid` overlay and a
    contact sheet.
-5. **The build machine lies.** Rendering with your fonts installed hides
-   fallback failures. Confirm fidelity through the embedded-font PPTX + PDF, or
-   through Slides thumbnails after insert — never the local render alone.
+5. **The build machine lies, and here is exactly how.** This sandbox carries
+   eight font families: DejaVu Sans, Serif and Mono; Liberation Sans, Serif,
+   Mono and Sans Narrow; and OpenSymbol. Anything else you typeset in is
+   substituted at render time, so a local PNG is evidence about geometry and
+   **not** about text fit. Only three faces are metric-compatible with what a
+   viewer will have: Arial through Liberation Sans, Times New Roman through
+   Liberation Serif, Courier New through Liberation Mono. For any other face,
+   trust the Pillow measurement against the real font file and never the render.
+   Confirm true typography through the embedded-font PPTX plus the PDF, or
+   through Slides thumbnails after insert. Run `fc-list : family` if you are
+   unsure what is installed.
 
 ## Mandatory workflow
 
@@ -210,8 +218,17 @@ motifs. See `docs/design-system.md`.
 
 For create mode, default to readable ranges (px): cover/section claims 56–72,
 titles 34–52, body 18–26, chart/table labels 12–16, source/footer 9–11. For
-template-following / targeted-edit, **record and preserve** the inherited system
-— do not impose fresh ranges or palettes unless asked to restyle.
+template-following / targeted-edit, **record and preserve** the inherited system.
+Do not impose fresh ranges or palettes unless asked to restyle.
+
+**A range is for choosing once, not for drifting.** Pick one size per role and
+hold it for the whole deck, then write the chosen values into
+`design-system.txt` so QA can check them. Two body sizes in one deck is a
+defect unless you can name the reason; three is always a defect. Across every
+role a finished deck should resolve to roughly five distinct sizes, not nine.
+The same discipline applies to the palette: one neutral, one accent, one
+support, each with a stated meaning, and nothing added later because a slide
+felt empty.
 
 Use a canonical kicker construction so QA can verify alignment: name the marker
 and label as a pair (`kicker-marker` / `kicker-label`), share their vertical
@@ -284,6 +301,27 @@ optically centred; boxed prose with visible top/bottom breathing room. Run the
 layout gate and fix all errors; warnings may remain only as known
 false-positives from intentional construction with a clean render. Inspect for
 any unverified logo/app-icon/mascot/product-UI/partner mark and remove it.
+
+**Bound the render loop.** Render, then actually look at every slide. The first
+pass normally surfaces a handful of real defects: overflow, overlap,
+misalignment. Fix those, re-render only the slides you changed, and stop. A
+third full pass means you are polishing rather than fixing, and it is the user's
+time you are spending. Text cut off at a box or slide boundary is the most
+common defect and the first thing to look for.
+
+**Validate the package, not your intent.** `engines/layout_check.py` reads the
+geometry this build emitted, so it checks what the builder *meant* to produce. A
+deck can pass it and still ship broken. Also run:
+
+```bash
+python3 engines/validate_pptx.py <deck>.pptx
+python3 engines/validate_pptx.py <deck>.pptx --original <template>.pptx
+```
+
+It opens the shipped file and checks that relationships resolve, content types
+are declared, no slide references a missing part, and chart XML is well formed.
+Use `--original` in template-following mode so defects the template already had
+are not attributed to your deck. Failures block delivery.
 
 ## Phase 7 — QA ledger & cleanup
 
