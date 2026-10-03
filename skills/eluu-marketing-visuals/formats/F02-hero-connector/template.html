@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>F02 — Hero object + connector map</title>
+<link rel="stylesheet" href="../../assets/marketing.css">
+<style>
+  html,body{margin:0;background:#ddd;}
+  /* ---- F02 slot positioning (16:9 base 1600×900). Axis line y=480 ---- */
+  .f02-label{position:absolute; left:0; right:0; top:64px; text-align:center; z-index:3;}
+  .f02-hero {position:absolute; left:520px; top:266px; z-index:2;}   /* 560-wide card, mid ≈ y480 */
+  .f02-in   {position:absolute; left:110px; top:437px; z-index:2;}
+  .f02-out  {position:absolute; left:1240px; z-index:2;}
+  .f02-out--a{top:298px;} .f02-out--b{top:437px;} .f02-out--c{top:576px;}
+  .f02-in .mv-node{width:260px;}
+  .f02-out .mv-node{width:290px;}
+  /* ONE coherent bright path: input → card → middle deliverable.
+     Top & bottom deliverables recede to signify breadth (Mercury's Meals/Software). */
+  .f02-out--a, .f02-out--c{opacity:.42; filter:saturate(.92);}
+</style>
+</head>
+<body>
+<div class="mv-stage" id="stage">
+  <div class="mv-canvas mv-canvas--cream"></div>
+
+  <!-- T4 connectors (above card; dots sit on the card edge as ports) -->
+  <svg class="mv-connectors" viewBox="0 0 1600 900" preserveAspectRatio="none">
+    <!-- bright coherent path -->
+    <path d="M366,480 L520,480"/>                    <!-- Slack input → card -->
+    <path d="M1080,480 L1160,480"/>                  <!-- card → junction -->
+    <path d="M1160,480 L1240,480"/>                  <!-- junction → middle deliverable -->
+    <!-- faint breadth branches -->
+    <path class="faint" d="M1160,480 L1160,354 Q1160,340 1174,340 L1240,340"/>
+    <path class="faint" d="M1160,480 L1160,606 Q1160,620 1174,620 L1240,620"/>
+    <circle class="mv-node-dot" cx="520"  cy="480" r="5"/>
+    <circle class="mv-node-dot" cx="1160" cy="480" r="5"/>
+  </svg>
+
+  <!-- T5 label (quiet caption) -->
+  <div class="f02-label">
+    <span class="mv-label__chip">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#755a68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="12" r="2.2"/><path d="M8 7l8 4M8 17l8-4"/></svg>
+      Colleagues
+    </span>
+    <div class="mv-subtitle">One hire runs your whole ops</div>
+  </div>
+
+  <!-- T7 hero: Eluu colleague PROFILE card -->
+  <div class="f02-hero">
+    <div class="mv-colleague-card">
+      <div class="mv-cc__cover">
+        <div class="mv-cc__cover-topo"></div>
+      </div>
+      <div class="mv-cc__avatar">R</div>
+      <div class="mv-cc__body">
+        <div class="mv-cc__name">Riley</div>
+        <div class="mv-cc__role">Product Manager</div>
+        <div class="mv-cc__bio">Ships PRDs, research syntheses, and the weekly stakeholder update — on its own schedule.</div>
+        <div class="mv-cc__skills">
+          <span class="mv-chip">PRDs</span>
+          <span class="mv-chip">Discovery</span>
+          <span class="mv-chip">Roadmaps</span>
+          <span class="mv-chip">Metrics</span>
+        </div>
+        <div class="mv-cc__conns">
+          <div class="mv-cc__avatars">
+            <span class="mv-cc__av" style="background:#fff;border-color:#ece8e4;"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z" fill="#E01E5A"/><path d="M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z" fill="#36C5F0"/><path d="M18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312z" fill="#2EB67D"/><path d="M15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#ECB22E"/></svg></span>
+            <span class="mv-cc__av" style="background:#5E6AD2;"><svg width="17" height="17" viewBox="0 0 100 100" fill="#fff"><path d="M1.2 61.5a2 2 0 0 1 .6-1.8L60.3 1.8a2 2 0 0 1 3.2.9 49.9 49.9 0 0 1-61.4 61.4 2 2 0 0 1-.9-2.6ZM.2 45.9 45.9.2A50 50 0 0 0 .2 45.9ZM8.3 74.6a50.2 50.2 0 0 0 17.1 17.1L91.7 25.4A50.2 50.2 0 0 0 74.6 8.3ZM38.5 98.8a49.9 49.9 0 0 0 60.3-60.3Z"/></svg></span>
+            <span class="mv-cc__av" style="background:#1D1D1F;color:#fff;font-weight:480;font-size:12px;">G</span>
+            <span class="mv-cc__av" style="background:#eee7ec;color:#755a68;">+1</span>
+          </div>
+          <span class="mv-cc__conns-label">4 integrations connected</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- T9 input node (focal, crisp) — real Slack logo for instant recognition -->
+  <div class="f02-in">
+    <div class="mv-node mv-raised">
+      <div class="mv-node__ic" style="background:#fff;box-shadow:0 1px 2px rgba(28,27,31,.06);">
+        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z" fill="#E01E5A"/><path d="M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z" fill="#36C5F0"/><path d="M18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312z" fill="#2EB67D"/><path d="M15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#ECB22E"/></svg>
+      </div>
+      <div>
+        <div class="mv-node__label">New request</div>
+        <div class="mv-node__meta">Slack · #ops</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- T9 deliverables: middle = coherent bright line; top/bottom = breadth (faded) -->
+  <div class="f02-out f02-out--a">
+    <div class="mv-node mv-rest">
+      <div class="mv-node__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
+      <div><div class="mv-node__label">Weekly update</div><div class="mv-node__meta">Fri 3:00 PM</div></div>
+    </div>
+  </div>
+  <div class="f02-out f02-out--b">
+    <div class="mv-node mv-raised">
+      <div class="mv-node__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+      <div><div class="mv-node__label">Metrics review</div><div class="mv-node__meta">Mon 8:00 AM</div></div>
+    </div>
+  </div>
+  <div class="f02-out f02-out--c">
+    <div class="mv-node mv-rest">
+      <div class="mv-node__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg></div>
+      <div><div class="mv-node__label">Month-end recon</div><div class="mv-node__meta">1st · 09:00</div></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+/* Eluu Marketing-Visual System — technique toolkit (T1–T10)
+   Mercury-grade product illustrations, HTML/CSS/SVG → PNG.
+   Load this, set a canvas variant, compose focal components, push everything
+   else back with a de-emphasis dial. One focal point per image. */
+/* Inter as Mercury-Arcadia substitute. Variable axis so the intermediate
+   weight scale (360/400/420/480/530) works — "never bold, never thin". */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@360;400;420;480;530&display=swap');
+
+:root{
+  /* palette */
+  --paper-cream:#f2efec; --paper-lav:#eceaf6; --paper-grey:#f3f3f6;
+  --ink-strong:#1c1b1f; --ink-sub:#5c5660; --ink-soft:#9a938d;
+  --line:#c9c6d0; --hair:#ece8e4;
+  --accent:#755a68; --accent-tint:#efeaf0;
+  --card:#ffffff;
+  /* radii */
+  --r-lg:22px; --r-md:16px; --r-sm:12px; --r-pill:999px;
+  /* type */
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  /* display face aspires to Söhne Breit (wide grotesque); Inter until licensed */
+  --font-display:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  /* weight scale — 480 is the MAX emphasis; never 600/700 */
+  --w-body:400; --w-emph:480; --w-display:480; --w-display-lg:530;
+}
+
+*{box-sizing:border-box;}
+.mv-stage{
+  position:relative; width:1600px; height:900px; /* 16:9 base; override per aspect */
+  font-family:var(--font); color:var(--ink-strong);
+  font-weight:400; letter-spacing:.005em;
+  overflow:hidden; isolation:isolate;
+}
+
+/* ── T1 Paper canvas ─────────────────────────────────────────────── */
+.mv-canvas{position:absolute; inset:0; z-index:0;}
+.mv-canvas--cream{background:var(--paper-cream);}
+.mv-canvas--lav{background:var(--paper-lav);}
+.mv-canvas--grey{background:var(--paper-grey);}
+/* T10 grain + top-light vignette layered over the tint */
+.mv-canvas::before{ /* radial top-light */
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(120% 90% at 50% -10%, rgba(255,255,255,.75), rgba(255,255,255,0) 60%);
+}
+.mv-canvas::after{ /* fine grain (SVG noise, data-uri) */
+  content:""; position:absolute; inset:0; opacity:.045; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* ── T2 Soft elevation ───────────────────────────────────────────── */
+.mv-rest    {box-shadow:0 1px 2px rgba(28,27,31,.06);}
+.mv-raised  {box-shadow:0 8px 24px -8px rgba(28,27,31,.14), 0 2px 6px rgba(28,27,31,.06);}
+.mv-floating{box-shadow:0 30px 60px -20px rgba(28,27,31,.22), 0 8px 20px -8px rgba(28,27,31,.12);}
+
+/* generic focal card */
+.mv-card{background:var(--card); border-radius:var(--r-md); position:relative; z-index:2;}
+
+/* ── T3 De-emphasis dials (combine as needed) ────────────────────── */
+.mv-deemph      {filter:blur(6px) saturate(.85); opacity:.6;}
+.mv-deemph--soft{filter:blur(3px); opacity:.7;}
+.mv-deemph--grey{filter:saturate(.2); opacity:.5;}
+.mv-fade-bottom {-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%); mask-image:linear-gradient(180deg,#000 55%,transparent 100%);}
+.mv-fade-right  {-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 100%); mask-image:linear-gradient(90deg,#000 55%,transparent 100%);}
+.mv-fade-radial {-webkit-mask-image:radial-gradient(120% 120% at 30% 40%,#000 45%,transparent 80%); mask-image:radial-gradient(120% 120% at 30% 40%,#000 45%,transparent 80%);}
+
+/* ── T4 Connectors (inline SVG lives in the composition; these style it) ── */
+/* z-index 4 = above focal card so edge "port" dots stay visible; lines only
+   ever run in the gaps between components, never across a card interior. */
+.mv-connectors{position:absolute; inset:0; z-index:4; pointer-events:none;}
+.mv-connectors path{fill:none; stroke:var(--line); stroke-width:1.5; stroke-linecap:round;}
+.mv-connectors path.faint{stroke-opacity:.34;}      /* breadth branches recede */
+.mv-node-dot{fill:#fff; stroke:var(--accent); stroke-width:2;}
+
+/* ── T5 Label motif ──────────────────────────────────────────────── */
+/* Annotation must RECEDE below the focal object: medium weight, muted colour,
+   rounding harmonised with the cards (--r-sm), not a full pill. */
+.mv-label{display:inline-flex; align-items:center; gap:10px; z-index:3; position:relative;}
+.mv-label__chip{display:inline-flex; align-items:center; gap:8px; padding:7px 14px;
+  background:rgba(255,255,255,.62); border-radius:var(--r-sm);
+  box-shadow:0 1px 2px rgba(28,27,31,.05); font-weight:480; font-size:19px; letter-spacing:0;
+  color:var(--ink-sub);}
+.mv-subtitle{color:var(--ink-soft); font-size:17px; letter-spacing:0; margin-top:9px;}
+
+/* ── T7 Hero product object: the Eluu "colleague profile card" ────
+   Interpretation of Mercury's card object → a LinkedIn-style profile:
+   cover band + avatar + name/role + bio + skill chips + connections.
+   Light card so it holds focus without a heavy dark slab; the branded
+   topographic cover keeps the premium "brand object" tell. */
+.mv-colleague-card{
+  width:560px; background:#fff; border-radius:var(--r-lg); position:relative; overflow:hidden;
+  box-shadow:0 34px 64px -22px rgba(28,27,31,.24), 0 10px 24px -10px rgba(28,27,31,.12);
+}
+.mv-cc__cover{height:112px; position:relative; overflow:hidden;
+  background:radial-gradient(150% 170% at 82% -25%, #3a2f42 0%, transparent 55%),
+             linear-gradient(155deg,#2a2130 0%,#191320 100%);}
+.mv-cc__cover-topo{position:absolute; inset:0; opacity:.55;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='560' height='112'><g fill='none' stroke='white' stroke-opacity='0.18' stroke-width='1'><path d='M0 44 Q140 14 280 44 T560 44'/><path d='M0 60 Q140 30 280 60 T560 60'/><path d='M0 76 Q140 46 280 76 T560 76'/><path d='M0 92 Q140 62 280 92 T560 92'/></g></svg>");}
+.mv-cc__status{position:absolute; left:24px; top:20px; z-index:1; display:inline-flex; align-items:center; gap:8px; color:#efeaf0; font-size:18px; opacity:.92;}
+.mv-cc__dot{width:9px;height:9px;border-radius:50%;background:#7ee0b8;}
+.mv-cc__brand{position:absolute; right:26px; top:18px; z-index:1; color:#efeaf0; opacity:.85; font-size:20px; letter-spacing:2px;}
+.mv-cc__avatar{position:absolute; left:28px; top:72px; z-index:2; width:84px; height:84px; border-radius:22px;
+  background:linear-gradient(160deg,#8a6d80,#4a3850); border:4px solid #fff; color:#fff; font-size:34px; font-weight:480;
+  display:flex; align-items:center; justify-content:center;}
+.mv-cc__body{padding:64px 28px 26px;}
+.mv-cc__name{font-size:31px; font-weight:480; letter-spacing:0; color:var(--ink-strong);}
+.mv-cc__role{font-size:20px; color:var(--ink-sub); margin-top:3px;}
+.mv-cc__bio{font-size:19px; line-height:27px; color:var(--ink-sub); margin-top:14px;}
+.mv-cc__skills{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;}
+.mv-chip{padding:7px 13px; border-radius:10px; background:var(--accent-tint); color:var(--accent);
+  font-size:16px; font-weight:480; letter-spacing:0;}
+.mv-cc__conns{display:flex; align-items:center; gap:12px; margin-top:20px; padding-top:18px; border-top:1px solid var(--hair);}
+.mv-cc__avatars{display:flex;}
+.mv-cc__av{width:34px; height:34px; border-radius:50%; border:2px solid #fff; margin-left:-9px;
+  display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:480; color:#fff;}
+.mv-cc__av:first-child{margin-left:0;}
+.mv-cc__conns-label{font-size:16px; color:var(--ink-soft);}
+
+/* ── T9 Entity chip / capability node ────────────────────────────── */
+.mv-node{display:flex; align-items:center; gap:14px; background:var(--card);
+  border-radius:var(--r-sm); padding:16px 18px; min-width:240px;}
+.mv-node__ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  background:var(--accent-tint); color:var(--accent); flex:0 0 auto;}
+.mv-node__label{font-size:22px;font-weight:480;color:var(--ink-strong);letter-spacing:0;}
+.mv-node__meta{font-size:18px;color:var(--ink-sub);margin-top:2px;}
+
+/* ── List card + rows (F03 focus-row, F05 list, F10 mapping) ─────── */
+.mv-listcard{background:#fff; border-radius:var(--r-lg); overflow:hidden;}
+.mv-listcard__head{display:flex; align-items:baseline; justify-content:space-between; padding:26px 28px 0;}
+.mv-listcard__title{font-size:29px; font-weight:480; letter-spacing:0; color:var(--ink-strong);}
+.mv-listcard__count{font-size:20px; color:var(--ink-sub);}
+.mv-listcard__hr{height:1px; background:var(--hair); margin:20px 0 8px;}
+.mv-listcard__body{padding:0 16px 16px;}
+.mv-row{display:flex; align-items:center; gap:16px; padding:15px 12px; border-radius:14px;}
+.mv-row__avatar{width:52px; height:52px; border-radius:14px; flex:0 0 auto;
+  display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:480; color:#fff;}
+.mv-row__name{font-size:23px; font-weight:480; color:var(--ink-strong); letter-spacing:0;}
+.mv-row__meta{font-size:19px; color:var(--ink-sub); margin-top:2px;}
+.mv-row__right{margin-left:auto; text-align:right;}
+/* T3 focus-row: sharp + selected tint; siblings blurred back */
+.mv-row--focus{background:var(--accent-tint);}
+.mv-row--blur{filter:blur(4px); opacity:.6;}
+/* status pill */
+.mv-pill{display:inline-flex; align-items:center; gap:8px; padding:6px 13px; border-radius:var(--r-pill);
+  font-size:17px; font-weight:480;}
+.mv-pill--live{background:#e4f6ee; color:#1f8a5b;}
+.mv-pill--live .mv-cc__dot{background:#2eb67d;}
+
+/* ── T6 Device frames (minimal; full set in toolkit/frames/) ─────── */
+.mv-phone{width:390px;border-radius:44px;background:#fff;padding:12px;position:relative;
+  box-shadow:0 30px 60px -20px rgba(28,27,31,.22),0 8px 20px -8px rgba(28,27,31,.12);}
+.mv-phone__statusbar{display:flex;justify-content:space-between;align-items:center;
+  padding:6px 22px 10px;font-size:17px;font-weight:480;color:var(--ink-strong);}
+.mv-browser{border-radius:16px;background:#fff;overflow:hidden;
+  box-shadow:0 30px 60px -20px rgba(28,27,31,.2),0 8px 20px -8px rgba(28,27,31,.12);}
+.mv-browser__bar{height:44px;display:flex;align-items:center;gap:8px;padding:0 16px;background:#faf9fb;border-bottom:1px solid var(--hair);}
+.mv-browser__dot{width:11px;height:11px;border-radius:50%;background:#e2dfe6;}
+
+/* helpers */
+.mv-abs{position:absolute;}
+.mv-center{display:flex;align-items:center;justify-content:center;}
