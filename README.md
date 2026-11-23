@@ -36,6 +36,12 @@ Keep one session sharp across many large sub-tasks. See the [Handoffs technique]
 |---|---|
 | [`visualize`](./visualize) | Build a self-contained interactive visualization, simulation, chart or mockup to show how something works, what changes when an input moves, or how two things compare. |
 
+### Planning an agent team
+
+| Skill | What it does |
+|---|---|
+| [`agentic-diagnosis`](./agentic-diagnosis) | Find where agents and apps would help a person and their team. Maps the pipeline from connected tools and past work, asks at most five questions, and delivers one short report: the workflows agents can run in priority order, the agents and apps for each team, and the outcome and metric for each one. Read only: it suggests and builds nothing. |
+
 ### Reusable templates
 
 | Skill | What it does |
@@ -56,6 +62,7 @@ Some skills need packages or binaries in the agent sandbox. Each `SKILL.md` ends
 | `pdf` | `reportlab`, `pdfplumber`, `pypdf`, Poppler (`pdftoppm`, `pdfinfo`) |
 | `visualize` | Python 3, no external services |
 | `template-creator` | Node.js, Drive integration for Google sources |
+| `agentic-diagnosis` | Nothing to install. Works best with read access to the team's CRM, email, calendar and chat |
 
 ## Contributing
 

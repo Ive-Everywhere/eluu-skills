@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TEAM}}: workflows agents can run</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Eluu Apps kit: tokens and the components this report uses (surface, table, chip, step). */
+  .kit {
+    --bg:#ffffff; --bg-weak:#f7f7f4; --bg-soft:#edede9; --text:#1e1c1e; --text-sub:#58564d; --text-soft:#6b6960;
+    --stroke:#dddbd1; --stroke-soft:#edede9;
+    --primary:#755a68; --primary-dark:#5d374b; --primary-tint:#f9f2f6; --primary-line:#e3d3db;
+    --ok-bg:#e0faec; --ok-ink:#0b4627; --warn-bg:#fff3eb; --warn-ink:#71330a;
+    --r:8px; --r-lg:12px; --r-pill:999px; --pad:16px; --fs:14px;
+    font-family:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif; font-size:var(--fs); line-height:1.45;
+    color:var(--text); font-variant-numeric:tabular-nums;
+  }
+  .kit *, .kit *::before, .kit *::after { box-sizing:border-box; }
+  .kit p, .kit h1, .kit h2, .kit h3 { margin:0; padding:0; }
+  .k-surface { background:var(--bg); border:1px solid var(--stroke); border-radius:var(--r-lg); overflow:hidden; }
+  .k-s { font-size:calc(var(--fs) - 1px); color:var(--text-sub); }
+  .k-xs { font-size:calc(var(--fs) - 2px); color:var(--text-soft); }
+  .k-chip { display:inline-flex; align-items:center; height:22px; padding:0 8px; border-radius:var(--r-pill); font-size:calc(var(--fs) - 2px); font-weight:500; background:var(--bg-soft); color:var(--text-sub); white-space:nowrap; vertical-align:1px; margin-left:6px; }
+  .k-chip.is-primary { background:var(--primary-tint); color:var(--primary-dark); }
+  .k-chip.is-ok { background:var(--ok-bg); color:var(--ok-ink); }
+  .k-chip.is-warn { background:var(--warn-bg); color:var(--warn-ink); }
+  .k-step { display:inline-flex; align-items:center; justify-content:center; flex:none; width:24px; height:24px; border-radius:50%; border:1.5px solid var(--stroke); color:var(--text-soft); font-size:12px; font-weight:600; background:var(--bg); }
+  .k-step.is-done { background:var(--primary-dark); border-color:var(--primary-dark); color:#fff; }
+  .k-table { width:100%; border-collapse:collapse; font-size:var(--fs); }
+  .k-table th { padding:10px var(--pad); text-align:left; font-size:calc(var(--fs) - 2px); font-weight:500; color:var(--text-soft); background:var(--bg-weak); border-bottom:1px solid var(--stroke-soft); white-space:nowrap; }
+  .k-table td { padding:14px var(--pad); border-bottom:1px solid var(--stroke-soft); vertical-align:top; }
+  .k-table tr:last-child td { border-bottom:0; }
+  .k-table tr.is-selected td { background:var(--primary-tint); }
+
+  /* Page layout */
+  body { margin:0; background:#f7f7f4; }
+  .page { max-width:1080px; margin:0 auto; padding:44px 28px 64px; }
+  h1 { font-size:28px; line-height:1.2; font-weight:600; letter-spacing:-.02em; }
+  .lede { margin-top:6px !important; max-width:78ch; font-size:15px; color:var(--text-sub); }
+  h2 { font-size:17px; font-weight:600; letter-spacing:-.01em; margin:40px 0 12px !important; }
+  .kit .team h3 { font-size:14px; font-weight:600; padding:13px var(--pad); background:var(--bg); border-bottom:1px solid var(--stroke-soft); }
+  h3 span { font-weight:400; color:var(--text-soft); }
+  .starts { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-top:22px; }
+  .start { padding:16px; display:flex; gap:12px; align-items:flex-start; }
+  .start b { display:block; font-size:15px; font-weight:600; margin-bottom:2px; }
+  td b { font-weight:600; }
+  td .k-s, td .k-xs { display:block; margin-top:3px; }
+  td.rank { width:44px; padding-right:0; }
+  tr.is-guess td { color:var(--text-soft); }
+  .team + .team { margin-top:12px; }
+  .basis { margin-top:28px; padding:16px; }
+  .basis p { margin-bottom:5px !important; }
+  .basis b { color:var(--text); font-weight:600; }
+  @media (max-width:820px) { .starts { grid-template-columns:1fr; } .k-table, .k-table tbody, .k-table tr, .k-table td { display:block; } .k-table thead { display:none; } .k-table td { border:0; padding:3px var(--pad); } .k-table tr { border-bottom:1px solid var(--stroke-soft); padding:12px 0; } td.rank { width:auto; } }
+  @media print { body { background:#fff; } .k-surface { break-inside:avoid; } }
+</style>
+</head>
+<body>
+<div class="kit page">
+
+  <!-- 1. TOP -->
+  <h1>{{TEAM}}: {{N}} workflows agents can run</h1>
+  <p class="lede">{{SCOPE_IN_ONE_LINE}}. Diagnosed on {{DATE}} from {{WHAT_WAS_READ_IN_A_FEW_WORDS}}.</p>
+  <div class="starts">
+    <div class="k-surface start"><span class="k-step is-done">1</span><div><b>{{WORKFLOW}}</b><span class="k-s">{{OUTCOME_IN_ONE_LINE}}</span></div></div>
+    <div class="k-surface start"><span class="k-step is-done">2</span><div><b>{{WORKFLOW}}</b><span class="k-s">{{OUTCOME_IN_ONE_LINE}}</span></div></div>
+    <div class="k-surface start"><span class="k-step is-done">3</span><div><b>{{WORKFLOW}}</b><span class="k-s">{{OUTCOME_IN_ONE_LINE}}</span></div></div>
+  </div>
+
+  <!-- 2. WORKFLOWS IN PRIORITY ORDER. One row per workflow. Evidenced rows first, then guesses with class "is-guess".
+       The three to start: row class "is-selected", step class "is-done", chip "Start first".
+       Chips: <span class="k-chip is-primary">Start first</span>  <span class="k-chip is-ok">New work</span>  <span class="k-chip is-warn">Guess</span> -->
+  <h2>Workflows in priority order</h2>
+  <div class="k-surface">
+    <table class="k-table">
+      <thead><tr><th></th><th style="width:36%">Workflow</th><th style="width:16%">Team and reviewer</th><th style="width:27%">Outcome and metric</th><th>Based on</th></tr></thead>
+      <tbody>
+        <tr class="is-selected"><td class="rank"><span class="k-step is-done">1</span></td><td><b>{{WORKFLOW_NAME}}</b><span class="k-chip is-primary">Start first</span><span class="k-s">When {{TRIGGER}}, the agent {{WHAT_IT_DOES}}. {{PERSON}} {{APPROVES_OR_ACTS}}.</span></td><td>{{TEAM}}<span class="k-xs">{{REVIEWER}}</span></td><td>{{OUTCOME}}<span class="k-s">{{METRIC}}: {{TODAY}} today, target {{TARGET}}</span></td><td class="k-s">{{EVIDENCE}}</td></tr>
+        <tr><td class="rank"><span class="k-step">4</span></td><td><b>{{WORKFLOW_NAME}}</b><span class="k-chip is-ok">New work</span><span class="k-s">When {{TRIGGER}}, the agent {{WHAT_IT_DOES}}. {{PERSON}} {{APPROVES_OR_ACTS}}.</span></td><td>{{TEAM}}<span class="k-xs">{{REVIEWER}}</span></td><td>{{OUTCOME}}<span class="k-s">{{METRIC}}: {{TODAY}} today, target {{TARGET}}</span></td><td class="k-s">{{EVIDENCE}}</td></tr>
+        <tr class="is-guess"><td class="rank"><span class="k-step">9</span></td><td><b>{{WORKFLOW_NAME}}</b><span class="k-chip is-warn">Guess</span><span class="k-s">When {{TRIGGER}}, the agent {{WHAT_IT_DOES}}. {{PERSON}} {{APPROVES_OR_ACTS}}.</span></td><td>{{TEAM}}<span class="k-xs">{{REVIEWER}}</span></td><td>{{OUTCOME}}<span class="k-s">{{METRIC}}: not measured</span></td><td class="k-s">Guess: {{WHAT_IS_NOT_KNOWN}}</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 3. AGENTS AND APPS BY TEAM. Repeat one .team block for each team. -->
+  <h2>Agents and apps by team</h2>
+  <div class="k-surface team">
+    <h3>{{TEAM_NAME}} <span>&nbsp;·&nbsp; reviewer {{MANAGER}} &nbsp;·&nbsp; {{AI_PLAN}}</span></h3>
+    <table class="k-table">
+      <thead><tr><th style="width:26%">Agent</th><th style="width:36%">Workflows it runs</th><th>App the team opens</th></tr></thead>
+      <tbody>
+        <tr><td><b>{{AGENT_NAME}}</b><span class="k-xs">{{PERSONAL_or_TEAM}} &nbsp;·&nbsp; works with {{TOOL_CLASSES}}</span></td><td>{{WORKFLOW_NAMES}}</td><td><b>{{APP_NAME}}</b><span class="k-xs">{{APP_SHAPE}}: {{WHAT_IT_SHOWS}}</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 4. BASIS -->
+  <div class="k-surface basis k-s">
+    <p><b>Read:</b> {{SOURCES_READ}}</p>
+    <p><b>Not read:</b> {{SOURCES_NOT_READ}}</p>
+    <p><b>Guesses:</b> {{GUESSES}}</p>
+    <p><b>Needed first:</b> {{ACCESS_AND_DECISIONS}}</p>
+    <p>Targets are aims to agree with each reviewer. Nothing was built, sent or changed to write this report.</p>
+  </div>
+
+</div>
+</body>
+</html>
