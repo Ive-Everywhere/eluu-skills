@@ -12,12 +12,8 @@ App shapes: Tracker board, Approval queue, Metrics dashboard, Document review wo
 
 | Agent | What it does | For | Tool classes it needs | App | App shape |
 |---|---|---|---|---|---|
-| Lead Research Agent | Builds and keeps the target list, watches buying signals, and writes the account dossier before anyone is contacted. |  | people data, CRM, web research | Hypothesis backlog and results ledger |  |
-| Outbound Agent | Writes, checks and sends outbound, runs one test per campaign, and reports what worked. |  | sequencer, CRM, LinkedIn, messaging app | Outbound campaign report | Metrics and MIS dashboard plus 6 Run log |
-| Inbound Agent | Answers every inbound request fast, qualifies and routes it, and nurtures the ones not ready. |  | booking page, email, CRM | Inbound queue | Approval queue |
-| Pipeline Agent | Keeps the CRM true, drafts every follow-up, and flags deals at risk before the weekly review. |  | CRM, email drafts, call recorder, team chat | Deal risk queue | Approval queue |
 | Deal Risk Monitor | Daily, flag deals with no activity, slipping close dates, no next step or a stage held too long, with why and one suggested move. | AE and sales leader | CRM, email | Deal risk queue | Approval queue |
-| Pipeline Q&A Desk | Anyone in the pod gets a correct pipeline or ARR number in one message, with the query shown. | AE and sales leader | CRM | Pipeline Q&A dashboard | Metrics dashboard |
+| Pipeline Q&A Desk | Anyone in the team gets a correct pipeline or ARR number in one message, with the query shown. | AE and sales leader | CRM | Pipeline Q&A dashboard | Metrics dashboard |
 | Daily Forecast Cuts | The leader starts each day with forecast, pipeline, closures and slips cut the same way, from one source of truth. | Sales leader / CRO | CRM, spreadsheet, file storage | Forecast call prep | Metrics and MIS dashboard |
 | Commitment Keeper | Nothing the leader asked for or promised slips without being chased. | Sales leader | email, team chat, file storage | Commitment Keeper queue | Approval queue |
 | Win-loss Capture | Every closed deal has a loss or win reason on file. | Sales leader | CRM, email, call notes | Win-loss Capture queue | Approval queue |
@@ -29,9 +25,8 @@ App shapes: Tracker board, Approval queue, Metrics dashboard, Document review wo
 | Signal Plays | Reps start the day with accounts that have a real reason to talk now. | BDR manager | web research, CRM | Signal Plays tracker | Tracker board |
 | Buying Committee Map | Fewer single-threaded deals. | AE | people data, CRM | Buying Committee Map workspace | Document review workspace |
 | First-touch Drafter | A researched first email or LinkedIn message is ready for approval for each new target. | BDR | web research, CRM, email drafts | First-touch Drafter queue | Approval queue |
-| Daily Outbound Report | Daily per campaign: sends, replies, bounces, named repliers, with flags above 2% bounce and suggested fixes. | BDR manager | sequencer, team chat, email | Outbound campaign report | Metrics and MIS dashboard plus 6 Run log |
 | Competitor Watch | Reps get talking points the day a competitor shows up in an open deal. | AE and sales leader | web research, CRM, email | Competitor Watch dashboard | Metrics dashboard |
-| Pod scorecard | Each Monday (and a short daily pulse), report attainment, pipeline created and trials per rep against target, emailed to the lead. | Sales leader / pod lead | CRM, email | Weekly pod scorecard | Metrics and MIS dashboard |
+| Team scorecard | Each Monday (and a short daily pulse), report attainment, pipeline created and trials per rep against target, emailed to the lead. | Sales leader / team lead | CRM, email | Weekly team scorecard | Metrics and MIS dashboard |
 | Trial Success Check | Each Monday, list trials missing success criteria or stalled, per rep, with the next step. | Sales leader / BDR manager | CRM, email | Trial success tracker | Tracker board |
 | Rep Coaching Pack | Monthly per rep: pipeline created, win rate, trials, meetings and trend, with draft feedback. | Sales leader / BDR manager | CRM, email | Rep Coaching Pack dashboard | Metrics dashboard |
 | Product-line Revenue Dashboard | Leaders see ARR and pipeline per product line daily without asking RevOps. | Sales leader / CRO | CRM, app, spreadsheet | Product-line Revenue Dashboard dashboard | Metrics dashboard |
@@ -63,22 +58,18 @@ App shapes: Tracker board, Approval queue, Metrics dashboard, Document review wo
 
 | Agent | What it does | For | Tool classes it needs | App | App shape |
 |---|---|---|---|---|---|
-| Expansion Agent | Spots the next thing an existing user is ready for and prepares the pitch, the review and the renewal. |  | product database, email, CRM | Customer health dashboard | Metrics and MIS dashboard, with a band filter |
 | Renewal Risk Radar | From 120 days before each renewal, track usage trend, contact churn, competitor signals and open issues; alert the AM with a save plan. | AM | CRM, usage data, email | Renewal risk radar | Tracker board |
 | Customer Health Monitor | CS sees which accounts are slipping weeks before the renewal conversation. | CSM / Head of CS | usage data, CRM, support desk | Customer health dashboard | Metrics and MIS dashboard, with a band filter |
 | Champion Job-change Tracker | When a past buyer moves company, the owner of the new account gets a warm intro the same week. | AE / AM | people data, CRM | Champion Job-change Tracker tracker | Tracker board |
 | Account Handover Brief | When an account changes owner, gather history, contacts, open deals and notes into one brief. | AM | CRM, email | Account Handover Brief tracker | Tracker board |
 | Expansion Signals | Find product gaps and new business units inside existing customers; turn them into upsell plays. | AM | CRM, usage data, web research | Expansion Signals tracker | Tracker board |
 | QBR Deck Builder | Every key account gets a QBR deck built from real usage and deal data. | CSM / AM | CRM, usage data, slides tool | QBR Deck Builder queue | Approval queue |
-| Churn Reasons Agent | Classifies why each account left or downgraded and how much revenue each reason cost. |  | billing, CRM, email | Churn reasons board | Metrics and MIS dashboard |
 | Support Quality Reviewer | Scores every closed ticket against the quality rubric so a lead reviews only the risky ones. |  | support desk | Support QA review | Approval queue |
 | Track customer onboarding plans | Weekly status of each onboarding: milestones done, overdue steps and who owes what. | Customer success team | CRM, docs, spreadsheet | Onboarding plan tracker | Tracker board |
 | Context brief on every escalation | On each new or escalated ticket: the account's plan, billing state, usage, open bugs and past calls, posted to the ticket. | Support team | support desk, CRM, billing, issue tracker | Escalation briefs | Document review workspace |
 | Draft replies to tickets | A tone-matched reply draft per ticket, with order or billing status looked up. | Support team |  | Reply draft queue | Approval queue |
 | Triage new tickets | Each new ticket categorised, given a P1 to P4 priority, checked for duplicates and routed to a team. | Support team | support desk | Ticket triage queue | Approval queue |
 | Turn fixes into help articles | A knowledge base article drafted from a resolved ticket or repeated question. | Support team |  | Help article drafts | Document review workspace |
-| Package an engineering escalation | An escalation with repro steps, affected customers, business impact and history, ready for engineering. | Support team |  | Engineering escalation packs | Document review workspace |
-| Weekly customer issues summary | Weekly roll-up of top issues, affected accounts and trend, plus a drafted note to engineering. | Support team | support desk, issue tracker | Customer issues summary | Metrics dashboard |
 | Tier-1 answers in chat | Answers common questions in chat from the knowledge base and hands over with full context when it cannot. |  | help centre, chat tool | Chat answer log | Run log |
 | SLA watch and escalation | Watches every open ticket against its response target and escalates the right ones in time, with context. |  | support desk, team chat | Response target board | Metrics dashboard |
 | Refund and account change requests | Prepares the refund, credit or plan change in the billing system and waits for a person to approve it. |  | billing, support desk | Account change queue | Approval queue |
@@ -92,12 +83,6 @@ App shapes: Tracker board, Approval queue, Metrics dashboard, Document review wo
 
 | Agent | What it does | For | Tool classes it needs | App | App shape |
 |---|---|---|---|---|---|
-| Content Agent | Captures the founders' voice, drafts posts, articles and videos, and runs one calendar with batch approval. |  | LinkedIn, video host, website, app | Content calendar | Tracker board |
-| Community Agent | Listens for stated needs on Reddit, Threads and developer forums, drafts helpful answers, and triages social inbound. |  | social platforms, LinkedIn | Community tracker | Tracker board |
-| Search Visibility Agent | Keeps the site crawlable, checks how AI answers describe us, and publishes the pages and listings that fix the gaps. |  | website repo, search analytics, directories | Search and AI visibility report |  |
-| Website Pages Agent | Produces department, role, use-case and industry pages from one messaging house, with proof, tests and refresh. |  | website repo, product analytics | Website Pages workspace | Document review workspace |
-| Collateral Agent | Builds the deliverable a prospect asked for, keeps the library and the approved claims current. |  | content library, PDF, app | Collateral and claims library |  |
-| Lifecycle Email Agent | Sends the right product email at each stage, from welcome to win-back, on a separate sending domain. |  | email marketing tool, product analytics, transactional sender | Onboarding funnel | Metrics and MIS dashboard |
 | Draft blogs and newsletters | A channel-ready draft with headline options, SEO keywords and a call to action. | Marketing team |  | Content draft queue | Approval queue |
 | Weekly marketing performance report | Weekly report of channel metrics, wins and misses, and the top fixes for next week. | Marketing team | CRM, web analytics | Marketing performance report | Metrics dashboard |
 | Plan the social calendar | A rolling posting calendar with captions in the brand voice, staged for approval. | Marketing team |  | Social calendar | Tracker board |
@@ -125,11 +110,6 @@ App shapes: Tracker board, Approval queue, Metrics dashboard, Document review wo
 | Agent | What it does | For | Tool classes it needs | App | App shape |
 |---|---|---|---|---|---|
 | Customer feedback themes weekly | Ranked feedback themes from tickets and calls, each with a count, verbatim quotes and links to the source conversation. | Product team | support desk, call recorder | Feedback themes board | Metrics dashboard |
-| Draft a PRD from idea | A spec with problem, goals, non-goals, success metrics and acceptance criteria, ready to review. | Product team |  | PRD workspace | Document review workspace |
-| Weekly product metrics digest | Monday note: each key metric against target and last week, the likely cause of every big move, one suggested action each. | Product team | product analytics | Product metrics digest | Metrics dashboard |
-| Synthesise customer interview calls | Insights across a batch of interviews: jobs to be done, themes, contradictions, each backed by a quoted line with speaker and time. | Product team |  | Interview synthesis library | Document review workspace |
-| Friday stakeholder update | Weekly update: what shipped, what slipped and why, decisions taken, risks, drafted from the issue tracker. | Product team | issue tracker | Stakeholder updates | Document review workspace |
-| Monthly competitor change watch | Monthly brief of competitor pricing, feature and positioning changes, with what each change means for the roadmap. | Product team | web research | Competitor change log | Tracker board |
 | Reprioritise the roadmap | An updated Now, Next, Later view with the score behind each item and what moves out to make room. | Product team |  | Roadmap board | Tracker board |
 | Draft the sprint plan | A sprint plan sized against capacity, with P0 and stretch items and carryover called out. | Product team |  | Sprint plan board | Tracker board |
 | Feature request intake | Collects feature requests from every channel, merges duplicates and links each to the accounts asking. |  | support desk, CRM, team chat, issue tracker | Feature request board | Tracker board |
@@ -145,7 +125,6 @@ App shapes: Tracker board, Approval queue, Metrics dashboard, Document review wo
 | ARR Reconciliation (CRM vs billing) | ARR in the CRM ties out to billing, and every break has an owner. | RevOps / finance ops | CRM, billing, subscription metrics, spreadsheet | ARR reconciliation (CRM vs billing) | Two-sided reconciliation |
 | Bill Approval Desk | Codes and stages each incoming bill against its purchase order and contract, as a draft for approval. |  | AP inbox, accounting tool | Bill approval queue | Approval queue |
 | Planning Workbook Auditor | Audits the planning workbook every day for broken structure and formulas, and answers budget against actuals questions. |  | spreadsheet | Planning Workbook Auditor tracker | Tracker board |
-| Spend Pulse | Posts a daily view of card and software spend and warns before a renewal. |  | expense tool | SaaS spend and renewal calendar | Tracker board |
 | Month-end Close Agent | Tracks every close task, runs the checks, and shows what is late or blocked. |  | accounting tool | Month-end close checklist | Tracker board plus 6 Run log for the checks |
 | SaaS Metrics Agent | Rebuilds MRR, churn and net revenue retention every night with the accounts behind each movement. |  | billing | SaaS metrics board | Metrics and MIS dashboard |
 | Reconcile bank and billing | Ledger matched to billing and bank settlements, with breaks, duplicates and missing receipts flagged. | Finance team | accounting tool, billing | Bank and billing reconciliation | Two-sided reconciliation |
@@ -165,7 +144,6 @@ App shapes: Tracker board, Approval queue, Metrics dashboard, Document review wo
 
 | Agent | What it does | For | Tool classes it needs | App | App shape |
 |---|---|---|---|---|---|
-| Compliance Evidence Agent | Collects SOC 2 evidence on schedule, watches for drift, and prepares the audit and the answers to security questionnaires. |  | compliance tool, code host, office suite | Compliance evidence tracker |  |
 | Contract Review Desk | Every inbound MSA, NDA or redline gets an issues list against the playbook within hours. | Deal desk / legal ops | email, file storage, spreadsheet | Contract Review tracker | Tracker board |
 | Contract and Renewal Date Tracker | No renewal date or notice period is missed because the contract was never filed. | AM / deal desk | email, file storage, spreadsheet | Contracts desk | Document review workspace |
 | NDA triage | Reads each incoming NDA, approves the standard ones against the playbook and sends only the exceptions to a lawyer. |  | email, file storage, e-signature | NDA queue | Approval queue |
@@ -183,8 +161,6 @@ App shapes: Tracker board, Approval queue, Metrics dashboard, Document review wo
 
 | Agent | What it does | For | Tool classes it needs | App | App shape |
 |---|---|---|---|---|---|
-| Monday business brief | One page each Monday: cash, revenue, pipeline, this week's commitments and the one thing needing attention. | Leadership team | CRM, billing, calendar | Monday business brief | Metrics dashboard |
-| Draft the board update | A board or investor update drafted from live numbers, with the narrative for each metric. | Leadership team |  | Board update drafts | Document review workspace |
 | Cross-tool daily digest | Each morning: mentions, decisions and action items across mail, chat and docs, grouped by project. | Leadership team | email, team chat | Daily digest | Metrics dashboard |
 | Meeting notes and action items | Summarises each meeting, files the decisions and assigns every action to an owner with a date. |  | call recorder, task tool, team chat | Action item tracker | Tracker board |
 | Inbox triage and reply drafts | Sorts the inbox by what needs you, drafts the replies and files the rest. |  | email | Inbox reply queue | Approval queue |
@@ -205,7 +181,6 @@ App shapes: Tracker board, Approval queue, Metrics dashboard, Document review wo
 
 | Agent | What it does | For | Tool classes it needs | App | App shape |
 |---|---|---|---|---|---|
-| Attendance Clock-in | Marks attendance in the HR tool every working day. |  | HR system | Attendance Clock-in log | Run log |
 | Recruiting and Onboarding Desk | Screens candidates, assembles the hiring packet, and runs the new-joiner checklist. |  | ATS, HR system, docs | Recruiting and Onboarding tracker | Tracker board |
 | Candidate screening and shortlist | Scores each applicant against the role's real requirements and gives the recruiter a ranked shortlist with reasons. |  | ATS, email | Candidate shortlist | Approval queue |
 | Interview scheduling | Books interview loops across calendars and chases the scorecards afterwards. |  | ATS, calendar, team chat | Interview loop tracker | Tracker board |
@@ -235,7 +210,7 @@ App shapes: Tracker board, Approval queue, Metrics dashboard, Document review wo
 | Access requests and reviews | Routes each access request for approval, grants it for a set time, and runs the quarterly access review. |  | identity provider, support desk | Access review tracker | Tracker board |
 | AI tool and agent inventory | Keeps a list of the AI tools and agents in use, who owns each and what data it can reach. |  | sign-in logs, expense data, admin consoles | AI tool inventory | Tracker board |
 | Security questionnaire answers | Drafts the answers to a customer security questionnaire from approved answers and evidence, with each source shown. |  | answer library, compliance tool | Questionnaire workspace | Document review workspace |
-| Vendor risk review | Collects a vendor's security documents, checks them against our requirements and writes the risk summary. |  | vendor documents, compliance tool | Vendor risk tracker | Tracker board |
+| Vendor risk review | Collects a vendor's security documents, checks them against the team's requirements and writes the risk summary. |  | vendor documents, compliance tool | Vendor risk tracker | Tracker board |
 | Trust centre upkeep | Keeps the public security answers and documents current and flags the ones that have gone stale. |  | trust centre, compliance tool | Trust content tracker | Tracker board |
 | Software licence and seat audit | Finds unused seats and duplicate tools from sign-in and spend data before the renewal. |  | sign-in logs, spend data, admin consoles | Licence audit board | Metrics dashboard |
 | Legacy system knowledge capture | Records what people know about older systems before they leave and answers questions about them. |  | docs, call recorder | Legacy system notes | Document review workspace |

@@ -17,7 +17,7 @@ This skill suggests. It does not build agents, create apps, send messages or cha
 3. **No invented numbers.** A metric shows today's value only when you read it from a tool. Otherwise write "not measured". A rule or threshold is not a count. A target needs a basis you can name (the team's own goal, or the definition of done). Otherwise write "to agree". Never state money or hours without the arithmetic.
 4. **Gap first, agent second.** Start from the work and the goal, find the gap, then pick or design the agent. Use the catalogue as a checklist, not as a list to copy.
 5. **Look for work that is not done, not only work that is slow.** Part B of `references/gap-types.md` is required.
-6. **Each workflow is a whole job, not a chat bot.** It has a trigger, the agent's steps, the person who approves, and a result. Name it for the work it does (Launch Desk, Reply Desk).
+6. **Each workflow is a whole job, not a chat bot.** It has a trigger, the agent's steps, the person who approves, and a result. Name it for the work it does (Renewal Watch, Invoice Chase).
 7. **Name tools by class.** Write CRM, support desk, call recorder. Add the team's own product in brackets only when you read it from the workspace.
 8. **No head agents.** Do not suggest an orchestrator or an agent that runs other agents. A manager gets an app and is the reviewer.
 9. **Every agent has an app and a reviewer.** Anything that leaves the company is drafted by the agent and approved by a named person.
